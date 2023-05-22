@@ -1,16 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBF491"
     tools:context=".DataFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:text="Мои интересы"
-        android:textColor="#0AA1B5" />
+        android:layout_height="769dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="408dp"
+                android:layout_height="40dp"
+                android:background="#AAB5F1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="416dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="4dp"
+                android:text="Распространенность ИИ"
+                android:textAlignment="center"
+                android:textColor="#020202"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="357dp"
+                android:layout_height="106dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:text="Искусственный интеллект (ИИ) – это отрасль науки, официально увидевшая свет в 1956 году на летнем семинаре в Дартмут-колледже (Хановер, США), который организовали четверо американских ученых: Джон Маккарти, Марвин Мински, Натаниэль Рочестер и Клод Шеннон."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="338dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:background="#AAB5F1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="336dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="8dp"
+                android:text="Области внедрения ИИ в различные сферы"
+                android:textColor="#090909"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="158dp"
+                android:layout_height="153dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/img2_medcine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="185dp"
+                android:layout_height="164dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:text="ИИ способен полность изменить всю мировую медицину: преобразовать систему диагностики, способствовать разработке новых лекарственных препаратов и повысить качество медуслуг."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="191dp"
+                android:layout_height="158dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/img_kino"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="4dp"
+                android:text="Здравоохранение"
+                android:textColor="#020202"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="-12dp"
+                android:text="Кинематограф"
+                android:textColor="#040404"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="162dp"
+                android:layout_height="161dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="4dp"
+                android:text="ИИ также применяется в кинопроизводстве для написания сценариев, создания компьютерной графики, прогнозирование дохов в различных странах."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="176dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/img3_education"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:layout_marginEnd="36dp"
+                android:text="Образование"
+                android:textColor="#050505"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="170dp"
+                android:layout_height="186dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:text="Искусственный интеллект улучшает процесс образования посредством снижения барьеров для доступа к обучению, автоматизации процессов управления и оптимизации методов для улучшения результатов обучения."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>
