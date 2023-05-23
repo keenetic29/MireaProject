@@ -28,5 +28,17 @@
             android:id="@+id/nav_service"
             android:title="Music" />
 
+        <item
+            android:id="@+id/nav_audio"
+            android:title="Audio" />
+
+        <item
+            android:id="@+id/nav_sensor"
+            android:title="Sensor (Temperature)" />
+
+        <item
+            android:id="@+id/nav_camera"
+            android:title="Camera" />
+
     </group>
 </menu>

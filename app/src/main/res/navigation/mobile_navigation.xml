@@ -39,5 +39,20 @@
         android:name="com.mirea.andreevai.mireaproject.ServiceFragment"
         android:label="fragment_service"
         tools:layout="@layout/fragment_service" />
+    <fragment
+        android:id="@+id/nav_audio"
+        android:name="com.mirea.andreevai.mireaproject.AudioFragment"
+        android:label="fragment_audio"
+        tools:layout="@layout/fragment_audio" />
+    <fragment
+        android:id="@+id/nav_sensor"
+        android:name="com.mirea.andreevai.mireaproject.SensorFragment"
+        android:label="fragment_sensor"
+        tools:layout="@layout/fragment_sensor" />
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="com.mirea.andreevai.mireaproject.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera" />
 
 </navigation>
