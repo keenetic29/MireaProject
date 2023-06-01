@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -19,15 +19,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MireaProject"
         tools:targetApi="31">
-        <service
-            android:name=".PlayerService"
-            android:enabled="true"
-            android:exported="true"></service>
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:theme="@style/Theme.MireaProject.NoActionBar"></activity>
+
+        <service
+            android:name=".PlayerService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:label="Firebase"
             android:theme="@style/Theme.MireaProject.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.mirea.asd.camera.fileprovider"

@@ -65,4 +65,10 @@
         android:label="fragment_files"
         tools:layout="@layout/fragment_files" />
 
+    <fragment
+        android:id="@+id/nav_internet"
+        android:name="com.mirea.andreevai.mireaproject.InternetFragment"
+        android:label="fragment_internet"
+        tools:layout="@layout/fragment_internet" />
+
 </navigation>
