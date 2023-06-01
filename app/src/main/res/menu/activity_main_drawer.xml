@@ -52,5 +52,9 @@
             android:id="@+id/nav_internet"
             android:title="Weather" />
 
+        <item
+            android:id="@+id/nav_places"
+            android:title="Places" />
+
     </group>
 </menu>
