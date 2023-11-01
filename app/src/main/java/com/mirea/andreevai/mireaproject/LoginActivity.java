@@ -3,10 +3,17 @@ package com.mirea.andreevai.mireaproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
 import java.util.Objects;
 
 import com.mirea.andreevai.mireaproject.databinding.ActivityLoginBinding;
@@ -23,31 +31,95 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
 
+    private String AndroidId="";
+
+    private String AndroidConst = "6a4c7dfc9dc87541";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
-        binding.buttonsignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signIn(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+
+        PackageManager packageManager = getPackageManager();
+        List<PackageInfo> packages = packageManager.getInstalledPackages( 0);
+
+        for (PackageInfo packageInfo : packages) {
+            String appName = packageInfo.applicationInfo.loadLabel(packageManager).toString();
+
+            if (appName.contains("AnyDesk"))
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Важное сообщение!")
+                        .setMessage("У вас установлен AnyDesk!!")
+                        .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+// Закрываем диалоговое окно
+                                dialog.cancel();
+                                finishAffinity();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
 
             }
-        });
-        binding.buttoncreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAccount(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+            else {
+                binding.buttonsignin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        AndroidId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                        if (AndroidId.equals(AndroidConst)) {
+                            signIn(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+                        }
+                        else {
+                            binding.information.setText("Вы используете другое устройство");
+                        }
+                    }
+                });
+                binding.buttoncreate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        createAccount(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+                    }
+                });
+                binding.buttonverify.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sendEmailVerification();
+                    }
+                });
             }
-        });
-        binding.buttonverify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendEmailVerification();
-            }
-        });
+        }
+
+
+//        binding.buttonsignin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                AndroidId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+//                if (AndroidId.equals(AndroidConst)) {
+//                    signIn(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+//                }
+//                else {
+//                    binding.information.setText("Вы используете другое устройство");
+//                }
+//            }
+//        });
+//        binding.buttoncreate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                createAccount(binding.editemail.getText().toString(), binding.editpassword.getText().toString());
+//            }
+//        });
+//        binding.buttonverify.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                sendEmailVerification();
+//            }
+//        });
     }
 
     @Override
@@ -56,6 +128,12 @@ public class LoginActivity extends AppCompatActivity {
 // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
+
+        AndroidId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        binding.phoneID.setText(AndroidId);
+
+
+
     }
     private void updateUI(FirebaseUser user) {
         if (user != null) {

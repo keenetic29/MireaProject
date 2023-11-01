@@ -56,5 +56,10 @@
             android:id="@+id/nav_places"
             android:title="Places" />
 
+        <item
+            android:id="@+id/nav_list"
+            android:title="ListOfApps" />
+
+
     </group>
 </menu>
